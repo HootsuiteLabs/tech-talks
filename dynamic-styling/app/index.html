@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <title>Dynamic Styling in Angular.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600,700' rel='stylesheet' type='text/css'>
+  
+  <!-- base styles -->
+  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <!-- mobile app mockup -->
+  <link rel="stylesheet" type="text/css" href="styles/mobile-preview.css">
+  <!-- hsStyle directives -->
+  <hs-style name="colours" src="styles/colours.tpl.css"></hs-style>
+  <hs-style name="anim" src="styles/anim.tpl.css"></hs-style>
+
+  <!-- bower components -->
+  <script src="bower_components/angularjs/angular.min.js"></script>
+  <!-- branding module -->
+  <script src="components/styling/styling.js"></script>
+  <!-- angular app -->
+  <script src="app.js"></script>
+
+</head>
+<body ng-controller="AppController as main">
+
+  <div class="content">
+
+    <section class="demo">
+      <h1>Dynamic Styling in Angular.js</h1>
+
+      <div class="-content">
+
+        <div class="controls">
+          <p>Modify the values below to dynamically style Jon's mobile app.</p>
+          
+          <p>
+            Click <b>render</b> to apply input style values<br>
+            Click <b>toggle</b> to enable/disable rendered styles<br>
+            Click <b>clear</b> to remove rendered styles
+          </p>
+
+          <h4>Colors</h4>
+          <div class="-input-group">
+            <label>
+              background
+              <input type="color" ng-model="colours.bgColor" ng-init="colours.bgColor='#000000'">
+            </label>
+            <label>
+              text
+              <input type="color" ng-model="colours.textColor" ng-init="colours.textColor='#FFFFFF'">
+            </label>
+            <label>
+              border
+              <input type="color" ng-model="colours.borderColor" ng-init="colours.borderColor='#FFFFFF'">
+            </label>
+            <label>
+              button
+              <input type="color" ng-model="colours.buttonColor" ng-init="colours.buttonColor='#222222'">
+            </label>
+          </div>
+
+          <div class="-button-group">
+            <button class="-btn" ng-click="render('colours', colours)">Render</button>
+            <button class="-btn" ng-click="toggle('colours')">Toggle</button>
+            <button class="-btn" ng-click="clear('colours')">Clear</button>
+          </div>
+          
+          <h4>Transitions</h4>
+          <div class="-input-group">
+            <label>
+              <input type="range" min="0" max="10" ng-model="anim.time" ng-init="anim.time=0">{{anim.time}}s
+            </label>
+          </div>
+
+          <div class="-button-group">
+            <button class="-btn" ng-click="render('anim', anim)">Render</button>
+            <button class="-btn" ng-click="toggle('anim')">Toggle</button>
+            <button class="-btn" ng-click="clear('anim')">Clear</button>
+          </div>
+
+          <h4>The fun part...</h4>
+          <div class="input-group">
+            <label>
+              auto render
+              <input type="checkbox" ng-model="auto">
+            </label>
+          </div>
+
+          <p>Read the documentation below and check the source code to understand how this demo works.</p>
+        </div>
+
+        <!-- to be styled dynamically -->
+        <div class="mobile-preview">
+          <div class="-screen">
+            <h1 class="-user-name">Jonny</h1>
+            <h2 class="-user-title">Knows Nothing</h2>
+            <img class="-user-pic" src="img/profile.png">
+            <p class="-followers-count">256 followers</p>
+            <button class="-follow-btn">
+              <icon>+</icon> Follow
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+      
+    <section class="module">
+      <h1>styling.js</h1>
+
+      <p><strong>styling.js</strong> is a module that provides easy dynamic styling functionality for Angular.js based projects.</p>
+
+      <section class="features">
+        <h2>Features</h2>
+        <ul>
+          <li>Renders template stylesheets client-side using key/value objects</li>
+          <li>Handles multiple ngStyle directives</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>hsStyle</h2>
+        <p>The directive provides a way for loading a CSS file.</p>
+
+        <h3>Usage</h3>
+        <pre><code><span>&lt;hs-style</span><span class="att">name="mystyles"</span><span class="att">src="path/to/template.css"&gt;</span><span>&lt;/hs-style&gt;</span><code></pre>
+        <p>The CSS file can contain templated declarations using the double-brace syntax. These template declarations can be rendered on command through the <b>StylesService</b> service.</p>
+        <pre><code><span>@media all {</span><span class="att"><span>h1 {</span><span class="att" ng-non-bindable>color: {{mycolor}}</span><span>}</span></span><span>}</span></code></pre>
+      </section>
+
+      <section>
+        <h2>StylesService</h2>
+        <p>The service renders, clears and toggles the styles loaded by <b>hsStyle</b> directives.</p>
+
+        <h3>Usage</h3>
+
+        <!-- StyleService::render() -->
+        <p>Renders the hsStyle directive with name "mystyles" and replaces all instances of "mycolor" on the CSS template with "red"</p>
+        <pre><code><span>stylesService.render("mystyles", {mycolor: "red"});</span><code></pre>
+        <!-- StyleService::toggle() -->
+        <p>Toggles the active state of the directive. When disabled, the styles of the rendered template not applied but remain rendered.</p>
+        <pre><code><span>stylesService.toggle("mystyles");</span><code></pre>
+        <!-- StyleService::clear() -->
+        <p>Removes the rendered CSS template from the named directive.</p>
+        <pre><code><span>stylesService.clear("mystyles");</span><code></pre>
+
+        <p><b>hsStyle</b> directives can be targeted by name when provided with one or simply by using an integer corresponding to their order of appearance in a HTML document.</p>
+
+        <p> The following would clear the hsStyle directive rendered above.</p>
+        <pre><code><span>stylesService.clear(0);</span><code></pre>
+      </section>
+
+    </section>
+
+  </div>
+
+</body>
+</html>

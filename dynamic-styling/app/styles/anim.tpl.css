@@ -1,0 +1,22 @@
+/* 
+  Uses '@media all' query to group the insertion of multiple rulesets.
+ */
+@media all {
+  .-screen {
+    transition: background-color {{time}}s;
+  }
+
+  .-screen h1,
+  .-screen h2,
+  .-screen p {
+    transition: color {{time}}s;
+  }
+
+  .-screen img {
+    transition: border-color {{time}}s;
+  }
+
+  .-screen button {
+    transition: background-color {{time}}s;
+  }
+}

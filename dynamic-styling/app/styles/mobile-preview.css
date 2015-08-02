@@ -1,0 +1,99 @@
+/* 
+  Mobile Preview 
+ */
+.mobile-preview {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  display: -webkit-flex;
+  -webkit-justify-content: center;
+  width: 330px;
+  min-width: 330px;
+  max-height: 660px;
+  background-color: white;
+  padding: 70px 10px;
+  border-radius: 40px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1);
+  border: 3px solid #ddd;
+  margin: 20px 0px;
+}
+
+.mobile-preview:after {
+  position: absolute;
+  content: ' ';
+  width: 45px;
+  height: 45px;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, -15px);
+  border: 2px solid #eee;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.-screen {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-flex;
+  -webkit-flex-flow: column;
+  -webkit-flex-justify-content: center;
+  -webkit-flex-align-items: center;
+  width: 300px;
+  padding: 50px;
+  border-radius: 4px;
+  border: 2px solid #ddd;
+  background-color: black;
+}
+
+.-user-pic {
+  width: 150px;
+  border-radius: 50%;
+  margin: 10px;
+  border: 3px solid white;
+  padding: 7px;
+  margin: 0 auto;
+}
+
+.-user-name {
+  font-size: 2em;
+  margin: 0;
+  color: white;
+}
+
+.-user-title,
+.-followers-count {
+  font-size: 1.2em;
+  font-weight: 300;
+  color: white;
+  text-align: center;
+}
+
+.-follow-btn {
+  padding: 1em 2em;
+  width: 100%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: white;
+  background-color: rgba(128, 128, 127, 0.25);
+  font-size: 0.9em;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.-follow-btn:hover {
+  background-color: rgba(256, 256, 256, 0.25);
+}
+.-follow-btn icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 50%;
+  border: 1px solid;
+  letter-spacing: 0em;
+  line-height: 1em;
+  font-size: 1.3em;
+}

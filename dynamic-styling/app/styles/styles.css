@@ -1,0 +1,187 @@
+/*
+  Main styles
+ */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  background-color: #eee;
+}
+
+h1, h2, h3, h4, h5, h6, p, button, ol, ul, li, a, span, label, input {
+  font-family: 'Open Sans', sans-serif;
+}
+
+h1 {
+  font-size: 2em;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+p {
+  font-size: 1em;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  display: -webkit-flex;
+  -webkit-flex-direction: row;
+  -webkit-justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0px;
+  line-height: 1.8rem;
+}
+
+label:first-child {
+  border-top: 1px solid #ddd;
+}
+
+input[type="color"] {
+  width: 26px;
+  height: 30px;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  background-color: transparent;
+  -webkit-align-self: -webkit-flex-end;
+}
+
+input[type="range"] {
+  flex: 1;
+  margin-right: 20px;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: initial;
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+input[type="checkbox"]:before {
+  display: block;
+  position: absolute;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  content: '✔';
+  font-size: 1.6em;
+  text-align: center;
+  color: #eee;
+  text-align: center;
+  background-color: white;
+}
+
+input[type="checkbox"]:checked:before {
+  color: black;
+}
+
+pre {
+  white-space: pre-wrap;
+  display: block;
+  padding: 10px;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: white;
+  border-left: 4px solid #ccc;
+}
+
+pre code span {
+  font-family: monospace;
+  font-size: 0.9rem;
+  display: block;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+.content {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.att {
+  padding-left: 20px;
+}
+
+.demo .-content {
+  display: flex;
+  flex-flow: row;
+  display: -webkit-flex;
+  -webkit-flex-flow: row;
+}
+@media (max-width: 800px) {
+  .demo .-content {
+    flex-flow: column-reverse;
+    align-items: center;
+    -webkit-flex-flow: column-reverse;
+    -webkit-align-items: center;
+  }
+}
+
+.controls {
+  flex: 1;
+  -webkit-flex: 1;
+  margin-right: 40px;
+}
+@media (max-width: 800px) {
+  .controls {
+    margin: 0;
+  }
+}
+
+.-input-group {
+  display: flex;
+  flex-flow: column;
+  display: -webkit-flex;
+  -webkit-flex-flow: column;
+  margin-bottom: 20px;
+}
+
+.-button-group {
+  display: flex;
+  flex-flow: row;
+  display: -webkit-flex;
+  -webkit-flex-flow: row;
+  margin-bottom: 20px;
+}
+
+.-btn {
+  flex: 1;
+  -webkit-flex: 1;
+  padding: 10px 15px;
+  font-size: 0.9em;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: white;
+  background-color: #666;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  margin-right: 1px;
+}
+.-btn:last-child {
+  margin: none;
+}
+.-btn:hover {
+  background-color: black;
+}
